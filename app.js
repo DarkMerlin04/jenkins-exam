@@ -22,7 +22,7 @@ app.get('/', (req,res) => {
 })
 
 app.get('/getcode', (req,res)=> {
-    res.send("Dune Part: Two")
+    res.send("Dune Part: One!")
 })
 
 app.get('/plus/:num1/:num2', (req,res) => {
