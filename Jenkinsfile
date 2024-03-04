@@ -106,7 +106,7 @@ pipeline {
 
         stage("VM2: Run API from Image Registry") {
             agent {
-                label 'vm2'
+                label 'test'
             }
             steps {
                 sh 'docker-compose up -d --build'
