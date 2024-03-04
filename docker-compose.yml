@@ -1,0 +1,7 @@
+version: "3"
+services:
+  app:
+    container_name: jenkins-test
+    image: registry.gitlab.com/ajdvdsf.aj/jenkins-assignment
+    ports:
+      - "4000:5000"
