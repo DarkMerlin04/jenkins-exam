@@ -22,7 +22,7 @@ app.get('/', (req,res) => {
 })
 
 app.get('/getcode', (req,res)=> {
-    res.send("Paul Moddieb Usul!!!!")
+    res.send("Dune Part: Two")
 })
 
 app.get('/plus/:num1/:num2', (req,res) => {
