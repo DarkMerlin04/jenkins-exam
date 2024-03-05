@@ -50,23 +50,23 @@ const app = require('./app')
 //     });
 // })
 
-describe('GET /is_prime/:num1',() => {
-    it('true_when_x_is_17', async () => {
-        const responds = await request(app).get('/is_prime/17')
+describe('GET /next3/:num1',() => {
+    it('test_x_is_5', async () => {
+        const responds = await request(app).get('/next3/5')
         expect(responds.status).toBe(200)
-        expect(responds.text).toBe('true')
+        expect(responds.text).toBe("8")
     })
 
-    it('false_when_x_is_36', async () => {
-        const responds = await request(app).get('/is_prime/36')
+    it('test_x_is_neg5', async () => {
+        const responds = await request(app).get('/next3/-5')
         expect(responds.status).toBe(200)
-        expect(responds.text).toBe('false')
+        expect(responds.text).toBe('-2')
     })
 
     it('true_when_x_is_13219', async () => {
-        const responds = await request(app).get('/is_prime/13219')
+        const responds = await request(app).get('/next3/3.5')
         expect(responds.status).toBe(200)
-        expect(responds.text).toBe('true')
+        expect(responds.text).toBe('6.5')
     })
 
     afterAll(async () => {
