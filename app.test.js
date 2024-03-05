@@ -79,10 +79,8 @@ describe('GET /is_prime/:num1',() => {
     });
 })
 
-// VM2 - cd workspace
-// VM2 - cd jenkins-test
+// VM1 - cd /var/lib/jenkins/workspace/jenkins-test
 // ^-^ อันข้างบนคือ เข้าโฟลเดอร์นะงับ
 
-// VM2 - npm i
-// VM2 - npm run test
+// VM1 - sudo npm run test
 // ^-^ อันข้างบนคือ รัน unit test นะงับ
