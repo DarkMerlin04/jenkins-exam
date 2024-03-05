@@ -111,6 +111,8 @@ pipeline {
                 label 'preprod'
             }
             steps {
+                sh 'docker stop $(docker ps -a -q)'
+                sh 'docker system prune -a -f'
                 sh 'docker-compose up -d --build'
                 echo 'API Successfully Running'
             }
