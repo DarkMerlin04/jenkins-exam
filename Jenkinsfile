@@ -106,6 +106,32 @@ pipeline {
             }
         }
 
+        stage("VM2: Remove Image & Container") {
+            agent {
+                label 'preprod'
+            }
+            steps {
+                script {
+                    // Stop and remove all running containers
+                    def runningContainers = sh(script: 'docker ps -q | wc -l', returnStdout: true).trim().toInteger()
+                    if (runningContainers > 0) {
+                        sh 'docker stop $(docker ps -a -q)'
+                        sh 'docker rm $(docker ps -a -q)'
+                    } else {
+                        echo "No running containers to stop."
+                    }
+
+                    // Remove all Docker images
+                    def dockerImages = sh(script: 'docker images -q | wc -l', returnStdout: true).trim().toInteger()
+                    if (dockerImages > 0) {
+                        sh 'docker rmi -f $(docker images -q)'
+                    } else {
+                        echo "No Docker images to remove."
+                    }
+                }
+            }
+        }
+
         stage("VM2: Run API from Image Registry") {
             agent {
                 label 'preprod'
