@@ -6,8 +6,10 @@ pipeline {
     }
 
     stages {
-        stage("Clear Docker Con & Img if Exist any VM") {
-            agent any
+        stage("VM2: Clear Docker Con & Img if Exist") {
+            agent {
+                label 'vm2'
+            }
             steps {
                 script {
                     // Stop and remove all running containers
@@ -106,11 +108,9 @@ pipeline {
 
         stage("VM2: Run API from Image Registry") {
             agent {
-                label 'test'
+                label 'vm2'
             }
             steps {
-                sh 'docker stop $(docker ps -a -q)'
-                sh 'docker system prune -a -f'
                 sh 'docker-compose up -d --build'
                 echo 'API Successfully Running'
             }
