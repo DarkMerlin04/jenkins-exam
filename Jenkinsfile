@@ -6,9 +6,9 @@ pipeline {
     }
 
     stages {
-        stage("VM2: Clear Docker Con & Img if Exist") {
+        stage("VM1: Clear Docker Con & Img if Exist") {
             agent {
-                label 'vm2'
+                label 'master'
             }
             steps {
                 script {
@@ -108,7 +108,7 @@ pipeline {
 
         stage("VM2: Run API from Image Registry") {
             agent {
-                label 'vm2'
+                label 'preprod'
             }
             steps {
                 sh 'docker-compose up -d --build'
