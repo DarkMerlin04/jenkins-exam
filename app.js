@@ -18,7 +18,7 @@ function isPrime(num){
 }
 
 app.get('/', (req,res) => {
-    res.send("Hello World! test 1234 ");
+    res.send("Hello World!! I LOVE SDPX");
 })
 
 app.get('/getcode', (req,res)=> {
