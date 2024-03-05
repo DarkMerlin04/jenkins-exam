@@ -108,7 +108,7 @@ pipeline {
 
         stage("VM2: Remove Image & Container") {
             agent {
-                label 'preprod'
+                label 'test'
             }
             steps {
                 script {
@@ -134,11 +134,9 @@ pipeline {
 
         stage("VM2: Run API from Image Registry") {
             agent {
-                label 'preprod'
+                label 'test'
             }
             steps {
-                sh 'docker stop $(docker ps -a -q)'
-                sh 'docker system prune -a -f'
                 sh 'docker-compose up -d --build'
                 echo 'API Successfully Running'
             }
